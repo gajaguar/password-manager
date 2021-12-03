@@ -14,7 +14,7 @@ class CreateRecordsTable extends Migration
     public function up()
     {
         Schema::create('records', function (Blueprint $table) {
-            $table->uuid();
+            $table->uuid('id');
             $table->string('user_uuid');
             $table->string('record_name');
             $table->string('record_user');
