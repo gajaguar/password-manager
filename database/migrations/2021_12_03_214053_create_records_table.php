@@ -16,8 +16,8 @@ class CreateRecordsTable extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('records', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('user_uuid', 36);
-            $table->string('category_uuid', 36);
+            $table->string('user_id', 36);
+            $table->string('category_id', 36);
             $table->string('record_name', 50);
             $table->string('record_user', 50);
             $table->string('record_email', 50);
