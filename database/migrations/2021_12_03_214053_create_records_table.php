@@ -13,18 +13,23 @@ class CreateRecordsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('records', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('user_uuid');
-            $table->string('record_name');
-            $table->string('record_user');
-            $table->string('record_email');
-            $table->string('record_password');
-            $table->string('record_phone');
-            $table->string('record_url');
+            $table->string('user_uuid', 36);
+            $table->string('category_uuid', 36);
+            $table->string('record_name', 50);
+            $table->string('record_user', 50);
+            $table->string('record_email', 50);
+            $table->string('record_password', 50);
+            $table->string('record_phone', 20);
+            $table->string('record_url', 100);
             $table->string('record_notes');
             $table->timestamps();
+
+            $table->unique('record_name');
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -34,6 +39,8 @@ class CreateRecordsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('records');
+        Schema::enableForeignKeyConstraints();
     }
 }
