@@ -13,7 +13,7 @@ class StoreRecordRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class StoreRecordRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_id' => 'required|uuid|exists:users,id',
+            'category_id' => 'required|uuid|exists:categories,id',
+            'record_name' => 'required|string|min:3|max:50',
+            'record_user' => 'nullable|string|max:50',
+            'record_email' => 'nullable|string|max:50',
+            'record_password' => 'required|string|max:50',
+            'record_url' => 'nullable|string|max:100',
+            'record_phone' => 'nullable|string|min:10|max:20',
+            'record_notes' => 'nullable|string|max:255',
         ];
     }
 }
