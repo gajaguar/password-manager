@@ -13,12 +13,16 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('categories', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('category_name')->unique();
+            $table->string('category_name', 50);
             $table->string('category_description')->nullable()->default(null);
             $table->timestamps();
+
+            $table->unique('category_name');
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -28,6 +32,8 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('categories');
+        Schema::enableForeignKeyConstraints();
     }
 }
