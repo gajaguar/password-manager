@@ -1,42 +1,62 @@
-type AutoCompleteType = 'on' | 'off'
-type FormMethodType = 'get' | 'post'
-type FormTargetType = '_blank' | '_self' | '_parent' | '_top' | string
-type InputType = 'button' | 'checkbox' | 'color' | 'date' | 'datetime-local' | 'email' |
-  'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'radio' | 'range' |
-  'reset' | 'search' | 'submit' | 'tel' | 'text' | 'time' | 'url' | 'week'
-type MinMaxType = string | number | undefined
+type AutoCompleteType = "on" | "off";
+type FormMethodType = "get" | "post";
+type FormTargetType = "_blank" | "_self" | "_parent" | "_top" | string;
+type InputType =
+  | "button"
+  | "checkbox"
+  | "color"
+  | "date"
+  | "datetime-local"
+  | "email"
+  | "file"
+  | "hidden"
+  | "image"
+  | "month"
+  | "number"
+  | "password"
+  | "radio"
+  | "range"
+  | "reset"
+  | "search"
+  | "submit"
+  | "tel"
+  | "text"
+  | "time"
+  | "url"
+  | "week";
+type MinMaxType = string | number | undefined;
 type BaseInputProps = {
-  accept?: string
-  alt?: string
-  autoComplete?: AutoCompleteType
-  autoFocus?: boolean
-  checked?: boolean
-  disabled?: boolean
-  form?: string
-  formAction?: string
-  formEncType?: string
-  formMethod?: FormMethodType
-  formTarget?: FormTargetType
-  height?: number
-  id?: string
-  list?: string
-  max?: MinMaxType
-  maxLength?: number
-  min?: MinMaxType
-  minLength?: number
-  multiple?: boolean
-  name?: string
-  pattern?: string
-  placeholder?: string
-  readOnly?: boolean
-  required?: boolean
-  size?: number
-  src?: string
-  step?: number
-  type?: InputType
-  value?: string | number
-  width?: number
-}
+  accept?: string;
+  alt?: string;
+  autoComplete?: AutoCompleteType;
+  autoFocus?: boolean;
+  checked?: boolean;
+  disabled?: boolean;
+  form?: string;
+  formAction?: string;
+  formEncType?: string;
+  formMethod?: FormMethodType;
+  formTarget?: FormTargetType;
+  height?: number;
+  id?: string;
+  list?: string;
+  max?: MinMaxType;
+  maxLength?: number;
+  min?: MinMaxType;
+  minLength?: number;
+  multiple?: boolean;
+  name?: string;
+  pattern?: string;
+  placeholder?: string;
+  readOnly?: boolean;
+  required?: boolean;
+  size?: number;
+  src?: string;
+  step?: number;
+  type?: InputType;
+  value?: string | number;
+  width?: number;
+};
 
 function BaseInput({
   accept,
@@ -66,7 +86,7 @@ function BaseInput({
   size,
   src,
   step,
-  type = 'text',
+  type = "text",
   value,
   width,
 }: BaseInputProps) {
@@ -103,7 +123,7 @@ function BaseInput({
       value={value}
       width={width}
     />
-  )
+  );
 }
 
-export default BaseInput
+export default BaseInput;

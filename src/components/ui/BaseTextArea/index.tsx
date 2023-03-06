@@ -1,29 +1,27 @@
-import { ReactNode } from "react"
+import { ReactNode } from "react";
 
-type WrapType = "hard" | "soft"
+type WrapType = "hard" | "soft";
 type BaseTextAreaProps = {
-  autoFocus?: boolean
-  children?: ReactNode
-  cols?: number
-  dirName?: string
-  disabled?: boolean
-  form?: string
-  id?: string
-  maxLength?: number
-  name?: string
-  placeholder?: string
-  readOnly?: boolean
-  required?: boolean
-  rows?: number
-  value?: string
-  wrap: WrapType
-}
+  autoFocus?: boolean;
+  children?: ReactNode;
+  cols?: number;
+  disabled?: boolean;
+  form?: string;
+  id?: string;
+  maxLength?: number;
+  name?: string;
+  placeholder?: string;
+  readOnly?: boolean;
+  required?: boolean;
+  rows?: number;
+  value?: string;
+  wrap: WrapType;
+};
 
 function BaseTextArea({
   autoFocus = false,
   children,
   cols,
-  dirName,
   disabled = false,
   form,
   id,
@@ -40,7 +38,6 @@ function BaseTextArea({
     <textarea
       autoFocus={autoFocus}
       cols={cols}
-      dirName={dirName}
       disabled={disabled}
       form={form}
       id={id}
@@ -55,7 +52,7 @@ function BaseTextArea({
     >
       {children}
     </textarea>
-  )
+  );
 }
 
-export default BaseTextArea
+export default BaseTextArea;

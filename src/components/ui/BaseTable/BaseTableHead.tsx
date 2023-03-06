@@ -1,12 +1,10 @@
+import { ReactNode } from "react";
 
-import { ReactNode } from 'react'
-
-type BaseTableProps = { data: Array<ReactNode> }
+type BaseTableProps = { data: Array<ReactNode> };
 
 function BaseTableHead({ data }: BaseTableProps) {
-  const headers = data.map(node => <th>{ node }</th>)
-  return <tr>{ headers }</tr>
+  const headers = data.map((node) => <th key={`${node}`}>{node}</th>);
+  return <tr>{headers}</tr>;
 }
 
-export default BaseTableHead
-
+export default BaseTableHead;

@@ -1,5 +1,5 @@
 function App() {
-  return <blockquote>Amazing things are yet to come!</blockquote>
+  return <blockquote>Amazing things are yet to come!</blockquote>;
 }
 
-export default App
+export default App;
