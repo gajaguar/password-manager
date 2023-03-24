@@ -1,0 +1,33 @@
+.base-table {
+  border-collapse: collapse;
+  border-style: solid;
+  border-width: 1px;
+  font-family: "Nunito", sans-serif;
+  margin: 0.2rem;
+  &--borderless {
+    border-width: 0;
+  }
+  &__header {
+    border: 1px solid;
+    padding: 0.2rem;
+    &--borderless {
+      border-width: 0;
+    }
+  }
+  &__data {
+    border: 1px solid;
+    padding: 0.2rem;
+    &--borderless {
+      border-width: 0;
+    }
+  }
+  &__row {
+    margin: 0;
+  }
+  &__row--striped:nth-child(even) {
+    background-color: gray;
+  }
+  &__row--borderless {
+    border-width: 0;
+  }
+}
