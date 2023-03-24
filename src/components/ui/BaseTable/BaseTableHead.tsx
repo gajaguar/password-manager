@@ -1,10 +1,27 @@
 import { ReactNode } from "react";
 
-type BaseTableProps = { data: Array<ReactNode> };
+import { StyleOptions } from "../../../types";
+import { getClassName } from "../../../utils";
+import "./index.scss";
 
-function BaseTableHead({ data }: BaseTableProps) {
-  const headers = data.map((node) => <th key={`${node}`}>{node}</th>);
-  return <tr>{headers}</tr>;
-}
+type BaseTableHeadProps = {
+  borderless?: boolean;
+  data: Array<ReactNode>;
+};
+
+const BaseTableHead = ({ borderless = false, data }: BaseTableHeadProps) => {
+  const styleOptions: StyleOptions = [[borderless, "borderless"]];
+  const className = getClassName("base-table__header", styleOptions);
+  const headers = data.map((node) => (
+    <th className={className} key={`${node}`}>
+      {node}
+    </th>
+  ));
+  return (
+    <thead>
+      <tr className="base-table__row">{headers}</tr>
+    </thead>
+  );
+};
 
 export default BaseTableHead;

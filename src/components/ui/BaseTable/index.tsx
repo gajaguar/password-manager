@@ -1,24 +1,38 @@
 import { ReactNode } from "react";
-import BaseTableHead from "./BaseTableHead";
+
+import { StyleOptions } from "../../../types";
+import { getClassName } from "../../../utils";
 import BaseTableBody from "./BaseTableBody";
+import BaseTableHead from "./BaseTableHead";
+import "./index.scss";
 
 type BaseTableProps = {
-  id?: string;
-  headers?: Array<ReactNode>;
+  borderless?: boolean;
   data: Array<Array<ReactNode>>;
+  headers?: Array<ReactNode>;
+  id?: string;
+  striped?: boolean;
 };
 
-function BaseTable({ id, headers, data }: BaseTableProps) {
+const BaseTable = ({
+  borderless,
+  data,
+  headers,
+  id,
+  striped,
+}: BaseTableProps) => {
+  const styleOptions: StyleOptions = [[borderless, "borderless"]];
+  const className = getClassName("base-table", styleOptions);
   let tableHead;
   if (headers) {
-    tableHead = <BaseTableHead data={headers} />;
+    tableHead = <BaseTableHead data={headers} borderless={borderless} />;
   }
   return (
-    <table id={id}>
+    <table className={className} id={id}>
       {tableHead}
-      <BaseTableBody data={data} />
+      <BaseTableBody data={data} striped={striped} borderless={borderless} />
     </table>
   );
-}
+};
 
 export default BaseTable;
