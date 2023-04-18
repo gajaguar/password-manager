@@ -1,48 +1,47 @@
-import { ReactNode } from "react";
+import { FC, ReactNode, memo } from "react";
 
 import { StyleOptions, TableStyleOptions } from "../../../types";
 import { getClassName } from "../../../utils";
 
 type BaseTableBodyProps = {
   borderless?: boolean;
-  data: Array<Array<ReactNode>>;
+  data: ReactNode[][];
   striped?: boolean;
 };
 
-const getCells = (row: Array<ReactNode>, styleOptions: StyleOptions) => {
+const getCells = (
+  row: ReactNode[],
+  styleOptions: StyleOptions,
+  rowIndex: number
+) => {
   const className = getClassName("base-table__data", styleOptions);
-  return row.map((node) => {
-    return (
-      <td className={className} key={`${node}`}>
-        {node}
-      </td>
-    );
-  });
+  return row.map((node, cellIndex) => (
+    <td className={className} key={`${rowIndex}-${cellIndex}`}>
+      {node}
+    </td>
+  ));
 };
 
 const getRows = (
-  data: Array<Array<ReactNode>>,
+  data: ReactNode[][],
   { borderless, striped }: TableStyleOptions
 ) => {
-  const cellStyleOptions: StyleOptions = [[borderless, "borderless"]];
-  const rowStyleOptions: StyleOptions = [
-    [borderless, "borderless"],
-    [striped, "striped"],
-  ];
+  const cellStyleOptions: StyleOptions = { borderless };
+  const rowStyleOptions: StyleOptions = { borderless, striped };
   const className = getClassName("base-table__row", rowStyleOptions);
-  return data.map((row) => (
-    <tr className={className} key={`${row}`}>
-      {getCells(row, cellStyleOptions)}
+  return data.map((row, rowIndex) => (
+    <tr className={className} key={rowIndex}>
+      {getCells(row, cellStyleOptions, rowIndex)}
     </tr>
   ));
 };
 
-const BaseTableBody = ({
+const BaseTableBody: FC<BaseTableBodyProps> = ({
   borderless = false,
   data,
   striped = false,
-}: BaseTableBodyProps) => (
-  <tbody>{getRows(data, { borderless, striped })}</tbody>
-);
+}) => {
+  return <tbody>{getRows(data, { borderless, striped })}</tbody>;
+};
 
-export default BaseTableBody;
+export default memo(BaseTableBody);
