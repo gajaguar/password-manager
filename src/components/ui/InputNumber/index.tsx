@@ -59,17 +59,17 @@ const InputNumber: FC<InputNumberProps> = ({
   required,
   size,
   step = 1,
-  value = 0,
+  value,
   width,
 }) => {
   const [localValue, setLocalValue] = useState<number>(
-    clamp(Number(value), min, max)
+    clamp(Number(value), min, max) || 0
   );
 
   const decreaseValue = () =>
-    setLocalValue((prev) => clamp(prev - step, min, max));
+    setLocalValue((prev) => clamp(prev - step, min, max)); // needs fix case when step is decimal
   const increaseValue = () =>
-    setLocalValue((prev) => clamp(prev + step, min, max));
+    setLocalValue((prev) => clamp(prev + step, min, max)); // needs fix case when step is decimal
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     setLocalValue(clamp(Number(e.currentTarget.value), min, max));
 
