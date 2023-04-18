@@ -1,8 +1,5 @@
 import { StyleOptions } from "../types";
 
-const addClassModifier = (baseClassName: string, modifierName: string) =>
-  `${baseClassName}--${modifierName}`;
-
 export const getClassName = (
   baseClassName: string,
   styleOptions: StyleOptions
