@@ -27,8 +27,7 @@ export type InputTypeProp =
   | "week";
 export type InputValueProp = string | number;
 export type MinMaxProp = string | number;
-export type StyleOption = [boolean | undefined, string];
-export type StyleOptions = StyleOption[];
+export type StyleOptions = { [key: string]: boolean | undefined };
 export type TableStyleOptions = {
   borderless?: boolean;
   striped?: boolean;
