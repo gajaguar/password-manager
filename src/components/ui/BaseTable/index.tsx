@@ -8,8 +8,8 @@ import "./index.scss";
 
 type BaseTableProps = {
   borderless?: boolean;
-  data: Array<Array<ReactNode>>;
-  headers?: Array<ReactNode>;
+  data: ReactNode[][];
+  headers?: ReactNode[];
   id?: string;
   striped?: boolean;
 };
@@ -21,7 +21,7 @@ const BaseTable = ({
   id,
   striped,
 }: BaseTableProps) => {
-  const styleOptions: StyleOptions = [[borderless, "borderless"]];
+  const styleOptions: StyleOptions = { borderless };
   const className = getClassName("base-table", styleOptions);
   let tableHead;
   if (headers) {
