@@ -4,18 +4,16 @@ const addClassModifier = (baseClassName: string, modifierName: string) =>
   `${baseClassName}--${modifierName}`;
 
 export const getClassName = (
-  elementClassName: string,
+  baseClassName: string,
   styleOptions: StyleOptions
-) => {
-  let className = elementClassName;
-  styleOptions.forEach((element) => {
-    const [isActive, classModifier] = element;
-    if (isActive) {
-      className = `${className} ${addClassModifier(
-        elementClassName,
-        classModifier
-      )}`;
+): string => {
+  const classes = [baseClassName];
+
+  for (const [key, value] of Object.entries(styleOptions)) {
+    if (value) {
+      classes.push(`${baseClassName}--${key}`);
     }
-  });
-  return className;
+  }
+
+  return classes.join(" ");
 };
