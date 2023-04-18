@@ -1,8 +1,8 @@
 import { MouseEventHandler, ReactNode } from "react";
 
-type FormMethodType = "get" | "post";
-type FormTargetType = "_blank" | "_self" | "_parent" | "_top" | string;
-type InputType = "button" | "reset" | "submit";
+import { ButtonTypeProp, FormMethodProp, FormTargetProp } from "../../../types";
+import "./index.css";
+
 type BaseButtonProps = {
   autoFocus?: boolean;
   children?: ReactNode;
@@ -10,13 +10,13 @@ type BaseButtonProps = {
   form?: string;
   formAction?: string;
   formEncType?: string;
-  formMethod?: FormMethodType;
+  formMethod?: FormMethodProp;
   formNoValidate?: boolean;
-  formTarget?: FormTargetType;
+  formTarget?: FormTargetProp;
   id?: string;
   name?: string;
   onClick?: MouseEventHandler;
-  type?: InputType;
+  type?: ButtonTypeProp;
   value?: string;
 };
 
@@ -38,6 +38,7 @@ function BaseButton({
 }: BaseButtonProps) {
   return (
     <button
+      className="btn"
       autoFocus={autoFocus}
       disabled={disabled}
       form={form}
