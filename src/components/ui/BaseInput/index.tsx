@@ -1,51 +1,35 @@
-type AutoCompleteType = "on" | "off";
-type FormMethodType = "get" | "post";
-type FormTargetType = "_blank" | "_self" | "_parent" | "_top" | string;
-type InputType =
-  | "button"
-  | "checkbox"
-  | "color"
-  | "date"
-  | "datetime-local"
-  | "email"
-  | "file"
-  | "hidden"
-  | "image"
-  | "month"
-  | "number"
-  | "password"
-  | "radio"
-  | "range"
-  | "reset"
-  | "search"
-  | "submit"
-  | "tel"
-  | "text"
-  | "time"
-  | "url"
-  | "week";
-type MinMaxType = string | number | undefined;
+import { ChangeEventHandler } from "react";
+
+import {
+  AutoCompleteProp,
+  FormMethodProp,
+  FormTargetProp,
+  InputTypeProp,
+  MinMaxProp,
+} from "../../../types";
+
 type BaseInputProps = {
   accept?: string;
   alt?: string;
-  autoComplete?: AutoCompleteType;
+  autoComplete?: AutoCompleteProp;
   autoFocus?: boolean;
   checked?: boolean;
   disabled?: boolean;
   form?: string;
   formAction?: string;
   formEncType?: string;
-  formMethod?: FormMethodType;
-  formTarget?: FormTargetType;
+  formMethod?: FormMethodProp;
+  formTarget?: FormTargetProp;
   height?: number;
   id?: string;
   list?: string;
-  max?: MinMaxType;
+  max?: MinMaxProp;
   maxLength?: number;
-  min?: MinMaxType;
+  min?: MinMaxProp;
   minLength?: number;
   multiple?: boolean;
   name?: string;
+  onChange?: ChangeEventHandler;
   pattern?: string;
   placeholder?: string;
   readOnly?: boolean;
@@ -53,12 +37,12 @@ type BaseInputProps = {
   size?: number;
   src?: string;
   step?: number;
-  type?: InputType;
+  type?: InputTypeProp;
   value?: string | number;
   width?: number;
 };
 
-function BaseInput({
+const BaseInput = ({
   accept,
   alt,
   autoComplete,
@@ -79,6 +63,7 @@ function BaseInput({
   minLength,
   multiple,
   name,
+  onChange,
   pattern,
   placeholder,
   readOnly,
@@ -89,41 +74,40 @@ function BaseInput({
   type = "text",
   value,
   width,
-}: BaseInputProps) {
-  return (
-    <input
-      accept={accept}
-      alt={alt}
-      autoComplete={autoComplete}
-      autoFocus={autoFocus}
-      checked={checked}
-      disabled={disabled}
-      form={form}
-      formAction={formAction}
-      formEncType={formEncType}
-      formMethod={formMethod}
-      formTarget={formTarget}
-      height={height}
-      id={id}
-      list={list}
-      max={max}
-      maxLength={maxLength}
-      min={min}
-      minLength={minLength}
-      multiple={multiple}
-      name={name}
-      pattern={pattern}
-      placeholder={placeholder}
-      readOnly={readOnly}
-      required={required}
-      size={size}
-      src={src}
-      step={step}
-      type={type}
-      value={value}
-      width={width}
-    />
-  );
-}
+}: BaseInputProps) => (
+  <input
+    accept={accept}
+    alt={alt}
+    autoComplete={autoComplete}
+    autoFocus={autoFocus}
+    checked={checked}
+    disabled={disabled}
+    form={form}
+    formAction={formAction}
+    formEncType={formEncType}
+    formMethod={formMethod}
+    formTarget={formTarget}
+    height={height}
+    id={id}
+    list={list}
+    max={max}
+    maxLength={maxLength}
+    min={min}
+    minLength={minLength}
+    multiple={multiple}
+    name={name}
+    onChange={onChange}
+    pattern={pattern}
+    placeholder={placeholder}
+    readOnly={readOnly}
+    required={required}
+    size={size}
+    src={src}
+    step={step}
+    type={type}
+    value={value}
+    width={width}
+  />
+);
 
 export default BaseInput;
