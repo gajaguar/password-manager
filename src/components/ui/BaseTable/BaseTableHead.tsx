@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { FC, ReactNode, memo } from "react";
 
 import { StyleOptions } from "../../../types";
 import { getClassName } from "../../../utils";
@@ -6,14 +6,17 @@ import "./index.scss";
 
 type BaseTableHeadProps = {
   borderless?: boolean;
-  data: Array<ReactNode>;
+  data: ReactNode[];
 };
 
-const BaseTableHead = ({ borderless = false, data }: BaseTableHeadProps) => {
-  const styleOptions: StyleOptions = [[borderless, "borderless"]];
+const BaseTableHead: FC<BaseTableHeadProps> = ({
+  borderless = false,
+  data,
+}) => {
+  const styleOptions: StyleOptions = { borderless };
   const className = getClassName("base-table__header", styleOptions);
-  const headers = data.map((node) => (
-    <th className={className} key={`${node}`}>
+  const headers = data.map((node, index) => (
+    <th className={className} key={`${index}-${node}`}>
       {node}
     </th>
   ));
@@ -24,4 +27,4 @@ const BaseTableHead = ({ borderless = false, data }: BaseTableHeadProps) => {
   );
 };
 
-export default BaseTableHead;
+export default memo(BaseTableHead);
